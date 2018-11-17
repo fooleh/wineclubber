@@ -12,8 +12,6 @@ Go to http://localhost:8111 in your browser.
 
 A debugger such as "pdb" may be helpful for debugging.
 Read about it online.
-
-jackson_raffety,jwr2131
 """
 
 import os
@@ -36,7 +34,7 @@ app = Flask(__name__, template_folder=tmpl_dir)
 #
 #     DATABASEURI = "postgresql://biliris:foobar@104.196.18.7/w4111"
 #
-DATABASEURI = "postgresql://jwr2131:cde34rfvCDE#$RFV@35.196.158.126/proj1part2"
+DATABASEURI = "postgresql://user:password@104.196.18.7/w4111"
 
 
 #
@@ -67,7 +65,7 @@ def before_request():
   try:
     g.conn = engine.connect()
   except:
-    print "uh oh, problem connecting to database"
+    print("uh oh, problem connecting to database")
     import traceback; traceback.print_exc()
     g.conn = None
 
@@ -109,7 +107,7 @@ def index():
   """
 
   # DEBUG: this is debugging code to see what request looks like
-  print request.args
+  print(request.args)
 
 
   #
@@ -205,7 +203,7 @@ if __name__ == "__main__":
     """
 
     HOST, PORT = host, port
-    print "running on %s:%d" % (HOST, PORT)
+    print("running on %s:%d" % (HOST, PORT))
     app.run(host=HOST, port=PORT, debug=debug, threaded=threaded)
 
 
