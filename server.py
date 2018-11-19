@@ -165,10 +165,10 @@ def approvedorders():
   cursor = g.conn.execute("SELECT * FROM approval")
   names = []
   for row in cursor:
-    names.append(row[0]) 
+    names.append(row) 
   cursor.close()
   context = dict(data = names)
-  return render_template("approvedorders.html", **context)
+  return render_template("approvedorders.html", names)
 
 @app.route('/clubcontent')
 def clubcontent():
