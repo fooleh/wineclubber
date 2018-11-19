@@ -165,7 +165,7 @@ def approvedorders():
   cursor = g.conn.execute("SELECT * FROM approval")
   names = []
   for row in cursor:
-    names.append(row)  # can also be accessed using result[0]
+    names.append(row[0]) 
   cursor.close()
   context = dict(data = names)
   return render_template("approvedorders.html", **context)
