@@ -168,7 +168,7 @@ def approvedorders():
     names.append(row) 
   cursor.close()
   context = dict(data = names)
-  return render_template("approvedorders.html", names)
+  return render_template("approvedorders.html", **context)
 
 @app.route('/clubcontent')
 def clubcontent():
