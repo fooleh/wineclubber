@@ -179,7 +179,7 @@ def approvedorders():
 
 @app.route('/clubcontent')
 def clubcontent():
-  return render_template("clubcontent.html)
+  return render_template("clubcontent.html")
 
 @app.route('/customers')
 def customers():
@@ -195,7 +195,7 @@ def orders():
                         
 @app.route('/shippedorders')
 def shippedorders():
-  return render_template("shippedorders.html)
+  return render_template("shippedorders.html")
                          
 @app.route('/clubsignups')
 def clubsignups():
