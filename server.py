@@ -105,7 +105,7 @@ def index():
 
   See its API: http://flask.pocoo.org/docs/0.10/api/#incoming-request-data
   """
-  """
+  
   # DEBUG: this is debugging code to see what request looks like
   print request.args
 
@@ -119,7 +119,7 @@ def index():
     names.append(result['name'])  # can also be accessed using result[0]
   cursor.close()
   context = dict(data = names)
-  """
+  
   #
   # Flask uses Jinja templates, which is an extension to HTML where you can
   # pass data to a template and dynamically generate HTML based on the data
@@ -177,7 +177,7 @@ def approvedorders():
   context = dict(data = names)
   return render_template("approvedorders.html", **context)
 
-@app.route('/clubcontent)
+@app.route('/clubcontent')
 def clubcontent():
   return render_template("clubcontent.html)
 
