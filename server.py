@@ -105,7 +105,7 @@ def index():
 
   See its API: http://flask.pocoo.org/docs/0.10/api/#incoming-request-data
   """
-
+  """
   # DEBUG: this is debugging code to see what request looks like
   print request.args
 
@@ -118,7 +118,8 @@ def index():
   for result in cursor:
     names.append(result['name'])  # can also be accessed using result[0]
   cursor.close()
-
+  context = dict(data = names)
+  """
   #
   # Flask uses Jinja templates, which is an extension to HTML where you can
   # pass data to a template and dynamically generate HTML based on the data
@@ -145,14 +146,14 @@ def index():
   #     <div>{{n}}</div>
   #     {% endfor %}
   #
-  context = dict(data = names)
+  #context = dict(data = names)
 
 
   #
   # render_template looks in the templates/ folder for files.
   # for example, the below file reads template/index.html
   #
-  return render_template("index.html", **context)
+  return render_template("index.html")
 
 #
 # This is an example of a different path.  You can see it at:
@@ -162,12 +163,49 @@ def index():
 # Notice that the function name is another() rather than index()
 # The functions for each app.route need to have different names
 #
-@app.route('/another')
-def another():
-  return render_template("another.html")
+@app.route('/manager')
+def manager():
+  return render_template("manager.html")
 
+@app.route('/approvedorders')
+def approvedorders():
+  cursor = g.conn.execute("SELECT * FROM approval")
+  names = []
+  for result in cursor:
+    names.append(result['name'])  # can also be accessed using result[0]
+  cursor.close()
+  context = dict(data = names)
+  return render_template("approvedorders.html", **context)
 
-# Example of adding new data to the database
+@app.route('/clubcontent)
+def clubcontent():
+  return render_template("clubcontent.html)
+
+@app.route('/customers')
+def customers():
+  return render_template("customers.html")
+
+@app.route('/employees')
+def employees():
+  return render_template("employees.html")
+
+@app.route('/orders')
+def orders():
+  return render_template("orders.html")
+                        
+@app.route('/shippedorders')
+def shippedorders():
+  return render_template("shippedorders.html)
+                         
+@app.route('/clubsignups')
+def clubsignups():
+  return render_template("clubsignups.html")       
+
+@app.route('/tastingrooms')
+def tastingrooms():
+  return render_template("tastingrooms.html")                                      
+                                              
+# Example of adding new data to the database                        
 @app.route('/add', methods=['POST'])
 def add():
   name = request.form['name']
