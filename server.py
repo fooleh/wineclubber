@@ -172,31 +172,73 @@ def approvedorders():
 
 @app.route('/clubcontent')
 def clubcontent():
-  return render_template("clubcontent.html")
+  cursor = g.conn.execute("SELECT * FROM club_content")
+  names = []
+  for row in cursor:
+    names.append(row) 
+  cursor.close()
+  context = dict(data = names)
+  return render_template("clubcontent.html", **context)
 
 @app.route('/customers')
 def customers():
-  return render_template("customers.html")
+  cursor = g.conn.execute("SELECT * FROM customer")
+  names = []
+  for row in cursor:
+    names.append(row) 
+  cursor.close()
+  context = dict(data = names)
+  return render_template("customers.html", **context)
 
 @app.route('/employees')
 def employees():
-  return render_template("employees.html")
+  cursor = g.conn.execute("SELECT * FROM employees")
+  names = []
+  for row in cursor:
+    names.append(row) 
+  cursor.close()
+  context = dict(data = names)
+  return render_template("employees.html", **context)
 
 @app.route('/orders')
 def orders():
-  return render_template("orders.html")
+  cursor = g.conn.execute("SELECT * FROM orders")
+  names = []
+  for row in cursor:
+    names.append(row) 
+  cursor.close()
+  context = dict(data = names)  
+  return render_template("orders.html", **context)
                         
 @app.route('/shippedorders')
 def shippedorders():
-  return render_template("shippedorders.html")
+  cursor = g.conn.execute("SELECT * FROM ship")
+  names = []
+  for row in cursor:
+    names.append(row) 
+  cursor.close()
+  context = dict(data = names)  
+  return render_template("shippedorders.html", **context)
                          
 @app.route('/clubsignups')
 def clubsignups():
-  return render_template("clubsignups.html")       
+  cursor = g.conn.execute("SELECT * FROM signed_up")
+  names = []
+  for row in cursor:
+    names.append(row) 
+  cursor.close()
+  context = dict(data = names)
+  return render_template("clubsignups.html", **context)       
 
 @app.route('/tastingrooms')
 def tastingrooms():
-  return render_template("tastingrooms.html")                                      
+  cursor = g.conn.execute("SELECT * FROM tasting_room")
+  names = []
+  for row in cursor:
+    names.append(row) 
+  cursor.close()
+  context = dict(data = names)  
+  return render_template("tastingrooms.html", **context)                                      
                                               
 # Example of adding new data to the database                        
 @app.route('/add', methods=['POST'])
