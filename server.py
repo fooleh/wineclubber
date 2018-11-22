@@ -254,8 +254,8 @@ def add():
   state = request.form['State']
   country = request.form['Country']
   fullname = fname + " " + lname
-  g.conn.execute('INSERT INTO customer VALUES (cid,tel_num,full_name,state,city,zip,address)', \
-                cid,telno,fullname,state,city,zip_code,address)
+  g.conn.execute('INSERT INTO customer VALUES (%s,%s,%s,%s,%s,%s,%s)' \
+                % (cid,telno,fullname,state,city,zip_code,address))
   return redirect('/')
 
 
