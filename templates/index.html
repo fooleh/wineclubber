@@ -9,21 +9,71 @@
 
 <body>
   <h1>Welcome to WineClubber, enter customer data below to sign up</h1>
-  <div>{{data}}</div>
+  <p><a href="manager">Go to the Manager page</a></p>
 
-  <div>
-    {% for n in data %}
-    <div>{{n}}</div>
-    {% endfor %}
-  </div>
-
-<p><a href="manager">Go to the Manager page</a></p>
-
-<form method="POST" action="/add">
-<p>Name of new computer scientist: <input type="text" name="name"> <input type="submit" value="Add"></p>
+  <form method="POST" action="/add">
+  <table align="center" cellpadding = "10">
+ 
+<!----- First Name ---------------------------------------------------------->
+<tr>
+<td>FIRST NAME</td>
+<td><input type="text" name="First_Name" maxlength="30"/>
+</td>
+</tr>
+ 
+<!----- Last Name ---------------------------------------------------------->
+<tr>
+<td>LAST NAME</td>
+<td><input type="text" name="Last_Name" maxlength="30"/>
+</td>
+</tr>
+ 
+<!----- Mobile Number ---------------------------------------------------------->
+<tr>
+<td>MOBILE NUMBER</td>
+<td>
+<input type="text" name="Mobile_Number" maxlength="10" />
+(10 digit number)
+</td>
+</tr>
+ 
+<!----- Address ---------------------------------------------------------->
+<tr>
+<td>ADDRESS <br /><br /><br /></td>
+<td><textarea name="Address" rows="4" cols="30"></textarea></td>
+</tr>
+ 
+<!----- City ---------------------------------------------------------->
+<tr>
+<td>CITY</td>
+<td><input type="text" name="City" maxlength="30" />
+(max 30 characters a-z and A-Z)
+</td>
+</tr>
+ 
+<!----- State ---------------------------------------------------------->
+<tr>
+<td>STATE</td>
+<td><input type="text" name="State" maxlength="30" />
+(max 30 characters a-z and A-Z)
+</td>
+</tr>
+ 
+<!----- Country ---------------------------------------------------------->
+<tr>
+<td>COUNTRY</td>
+<td><input type="text" name="Country" value="India" readonly="readonly" /></td>
+</tr>
+ 
+<!----Submit/Reset---->
+<tr>
+<td colspan="2" align="center">
+<input type="submit" value="Submit">
+<input type="reset" value="Reset">
+</td>
+</tr>
+</table>
+    
 </form>
-
 </body>
-
-
 </html>
