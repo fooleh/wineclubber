@@ -18,6 +18,7 @@ import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
 from flask import Flask, request, render_template, g, redirect, Response
+from random import randint
 
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 app = Flask(__name__, template_folder=tmpl_dir)
@@ -243,8 +244,18 @@ def tastingrooms():
 # Example of adding new data to the database                        
 @app.route('/add', methods=['POST'])
 def add():
-  name = request.form['First_Name']
-  #g.conn.execute('INSERT INTO test VALUES (NULL, ?)', name)
+  cid = randint(10000,99999)
+  fname = request.form['First_Name']
+  lname = request.form['Last_Name']
+  telno = request.form['Mobile_Number']
+  address = request.form['Address']
+  city = request.form['City']
+  zip_code = request.form['Zip']
+  state = request.form['State']
+  country = request.form['Country']
+  fullname = fname + " " + lname
+  g.conn.execute('INSERT INTO customer VALUES (cid,tel_num,full_name,state,city,zip,address)', \
+                cid,telno,fullname,state,city,zip_code,address)
   return redirect('/')
 
 
