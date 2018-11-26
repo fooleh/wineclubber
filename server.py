@@ -211,7 +211,6 @@ def add():
   city = request.form['City']
   zip_code = request.form['Zip']
   state = request.form['State']
-  country = request.form['Country']
   fullname = fname + ' ' + lname
   g.conn.execute('INSERT INTO customer(cid,tel_num,full_name,state,city,zip,address) VALUES (%s,%s,%s,%s,%s,%s,%s)', \
                 (cid,telno,fullname,state,city,zip_code,address))
@@ -224,7 +223,7 @@ def add():
   if frequency == 'Bi-Annual':
     price = 300 if bottlecount == 6 else 450
   g.conn.execute('INSERT INTO signed_up(bottle_count,frequency,since,price,cid) VALUES (%s,%s,%s,%s,%s)', \
-                 (bottlecount,frequency,date_now,price,cid))
+                 (bottlecount,frequency.lower(),date_now,price,cid))
   
   return redirect('/')
 
