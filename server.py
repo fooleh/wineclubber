@@ -1,13 +1,9 @@
 #!/usr/bin/env python2.7
 
 """
-Columbia's COMS W4111.001 Introduction to Databases
-Example Webserver
-To run locally:
-    python server.py
-Go to http://localhost:8111 in your browser.
-A debugger such as "pdb" may be helpful for debugging.
-Read about it online.
+jwr2131
+jackson raffety
+webclubber
 """
 
 import os
@@ -50,8 +46,6 @@ def teardown_request(exception):
   except Exception as e:
     pass
 
-
-
 @app.route('/')
 def index():
   """
@@ -69,14 +63,6 @@ def index():
   context = dict(data = names)
   return render_template("index.html", **context)
 
-#
-# This is an example of a different path.  You can see it at:
-# 
-#     localhost:8111/another
-#
-# Notice that the function name is another() rather than index()
-# The functions for each app.route need to have different names
-#
 @app.route('/manager')
 def manager():
   return render_template("manager.html")
@@ -160,8 +146,7 @@ def tastingrooms():
   cursor.close()
   context = dict(data = names)  
   return render_template("tastingrooms.html", **context)                                      
-                                              
-# Example of adding new data to the database                        
+                                                                   
 @app.route('/add', methods=['POST'])
 def add():
   cid = randint(10000,99999)
@@ -187,7 +172,6 @@ def add():
                  (bottlecount,frequency.lower(),date_now,price,cid))
   
   return redirect('/')
-
 
 @app.route('/login')
 def login():
