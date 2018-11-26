@@ -106,7 +106,7 @@ def index():
 
   See its API: http://flask.pocoo.org/docs/0.10/api/#incoming-request-data
   """
-  cursor = g.conn.execute("SELECT DISTINCT frequency, price FROM signed_up")
+  cursor = g.conn.execute("SELECT DISTINCT bottle_count,frequency, price FROM signed_up")
   names = []
   for row in cursor:
     names.append(row) 
