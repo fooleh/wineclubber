@@ -165,7 +165,7 @@ def add():
   if frequency == 'Bi-Annual':
     price = 300 if bottlecount == 6 else 450
   g.conn.execute('INSERT INTO signed_up(bottle_count,frequency,since,price,cid) VALUES (%s,%s,%s,%s,%s)', \
-                 (bottlecount,frequency.lower(),date_now,price,cid))
+                 (bottlecount,frequency,date_now,price,cid))
   
   return redirect('/')
 
