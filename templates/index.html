@@ -9,6 +9,12 @@
 
 <body>
   <h1>Welcome to WineClubber, enter customer data below to sign up</h1>
+  <h2>Frequency and price options:</h2>
+  <div>
+    {% for n in data %}
+    <div>{{n}}</div>
+    {% endfor %}
+  </div>
   <p><a href="manager">Go to the Manager page</a></p>
 
   <form method="POST" action="/add">
