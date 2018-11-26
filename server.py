@@ -227,9 +227,9 @@ def add():
   date_now = dt.datetime.today().strftime('%Y-%m-%d')
   price = 0
   if frequency == 'Annual':
-    price = 150 if bottlecount = 6 else price = 300
+    price = 150 if bottlecount == 6 else 300
   if frequeny == 'Bi-Annual':
-    price = 300 if bottlecount = 6 else price = 450
+    price = 300 if bottlecount == 6 else 450
   g.conn.execute('INSERT INTO signed_up(bottle_count,frequency,since,price,cid) VALUES (%s,%s,%s,%s,%s)' \
                  (bottlecount,frequency,date_now,price,cid))
   
