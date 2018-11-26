@@ -15,6 +15,7 @@ Read about it online.
 """
 
 import os
+import datetime as dt
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
 from flask import Flask, request, render_template, g, redirect, Response
@@ -221,6 +222,17 @@ def add():
   fullname = fname + ' ' + lname
   g.conn.execute('INSERT INTO customer(cid,tel_num,full_name,state,city,zip,address) VALUES (%s,%s,%s,%s,%s,%s,%s)', \
                 (cid,telno,fullname,state,city,zip_code,address))
+  bottlecount = request.form['Bottle_Count']
+  frequency = request.form['Frequency']
+  date_now = dt.datetime.today().strftime('%Y-%m-%d')
+  price = 0
+  if frequency == 'Annual':
+    price = 150 if bottlecount = 6 else price = 300
+  if frequeny == 'Bi-Annual':
+    price = 300 if bottlecount = 6 else price = 450
+  g.conn.execute('INSERT INTO signed_up(bottle_count,frequency,since,price,cid) VALUES (%s,%s,%s,%s,%s)' \
+                 (bottlecount,frequency,date_now,price,cid))
+  
   return redirect('/')
 
 
